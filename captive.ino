@@ -12,9 +12,9 @@ const char* soft_ap_password = "Chipmunk";
 WiFiServer server(80);
 
 // Setting new ip address
-IPAddress local_IP(192, 168, 1, 184);
+IPAddress local_IP(172, 20, 7, 121);
 // Set your Gateway IP address
-IPAddress gateway(192, 168, 1, 1);
+IPAddress gateway(172, 20, 7, 1);
 IPAddress subnet(255, 255, 255, 0);
 
 void setup(){
@@ -25,6 +25,7 @@ void setup(){
   Serial.print("[OLD] ESP32 Board MAC Address:  ");
   Serial.println(WiFi.macAddress());
   esp_wifi_set_mac(WIFI_IF_STA, &newMACAddress[0]);
+  esp_base_mac_addr_set(newMACAddress);
   
   Serial.print("[NEW] ESP32 Board MAC Address:  ");
   Serial.println(WiFi.macAddress());
